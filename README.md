@@ -25,7 +25,7 @@ git pull
 
 | 目录 | 说明 |
 |------|------|
-| `agents/` | 自定义 Agent（plan, annotate, coder, review） |
+| `agents/` | 自定义 Agent（planner, annotater, coder, reviewer） |
 | `skills/` | Skill 定义（coding-standards, naming-conventions, urouter, swift-log） |
 | `plans/template/` | 计划模板（Swift Feature, Swift Refactor） |
 | `reviews/template/` | Review 模板（功能收尾, 代码审查） |
