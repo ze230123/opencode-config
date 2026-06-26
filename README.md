@@ -11,7 +11,7 @@
 ./init.sh /path/to/new-project
 
 # 方式二：远程一行搞定
-curl -sL https://raw.githubusercontent.com/{org}/opencode-config/main/init.sh | bash -s /path/to/project
+curl -sL https://raw.githubusercontent.com/ze230123/opencode-config/main/init.sh | bash -s /path/to/project
 ```
 
 ### 更新已有项目配置

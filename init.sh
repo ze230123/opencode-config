@@ -3,7 +3,7 @@
 # 将团队 opencode 配置复制到目标项目
 # 用法:
 #   本地: ./init.sh /path/to/project
-#   远程: curl -sL https://raw.githubusercontent.com/{org}/opencode-config/main/init.sh | bash -s /path/to/project
+#   远程: curl -sL https://raw.githubusercontent.com/ze230123/opencode-config/main/init.sh | bash -s /path/to/project
 
 set -e
 
