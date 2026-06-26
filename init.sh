@@ -18,7 +18,7 @@ fi
 if [ -n "${BASH_SOURCE[0]}" ] && [ -f "${BASH_SOURCE[0]}" ]; then
   SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 else
-  REPO_URL="${OPENCODE_CONFIG_REPO:-https://github.com/youzyteam/opencode-config.git}"
+  REPO_URL="${OPENCODE_CONFIG_REPO:-https://github.com/ze230123/opencode-config.git}"
   SCRIPT_DIR="$(mktemp -d)"
   echo "==> 克隆配置仓库..."
   git clone --depth 1 "${REPO_URL}" "${SCRIPT_DIR}" 2>/dev/null
