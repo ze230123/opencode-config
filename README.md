@@ -1,6 +1,6 @@
 # opencode-config
 
-团队共享的 OpenCode 配置，包含自定义 Agent、Skill、模板和工作流。
+团队共享的 OpenCode 配置，面向 Swift / iOS 项目，包含自定义 Agent、Skill、模板和工作流。
 
 ## 快速初始化
 
@@ -30,6 +30,14 @@ git pull
 | `plans/template/` | 计划模板（Swift Feature, Swift Refactor） |
 | `reviews/template/` | Review 模板（功能收尾, 代码审查） |
 | `agents-guide.md` | Agent 使用说明 |
+
+## 初始化自动配置
+
+`init.sh` 会自动完成以下配置：
+
+- 复制 Agent、Skill、模板到项目 `.opencode/` 目录
+- 配置 `opencode.json`：添加 Xcode MCP（`xcrun mcpbridge`）和 `PROFILE.md` 指令
+- 交互式生成 `PROFILE.md`
 
 ## 更新配置
 
