@@ -21,7 +21,11 @@ else
   REPO_URL="${OPENCODE_CONFIG_REPO:-https://github.com/ze230123/opencode-config.git}"
   SCRIPT_DIR="$(mktemp -d)"
   echo "==> 克隆配置仓库..."
-  git clone --depth 1 "${REPO_URL}" "${SCRIPT_DIR}" 2>/dev/null
+  if ! git clone --depth 1 "${REPO_URL}" "${SCRIPT_DIR}"; then
+    echo "错误: 无法克隆 ${REPO_URL}"
+    rm -rf "${SCRIPT_DIR}"
+    exit 1
+  fi
   CLEANUP=1
 fi
 
