@@ -114,14 +114,22 @@ fi
 # opencode.json
 OPENCODE_JSON="${TARGET}/opencode.json"
 if [ -f "${OPENCODE_JSON}" ]; then
-  HAS_INSTRUCTIONS=$(python3 -c "
-import json, sys
+  UPDATED=$(python3 -c "
+import json
 try:
   cfg = json.load(open('${OPENCODE_JSON}'))
+  changed = False
   instr = cfg.get('instructions', [])
   if 'PROFILE.md' not in instr:
     instr.append('PROFILE.md')
     cfg['instructions'] = instr
+    changed = True
+  mcp = cfg.get('mcp', {})
+  if 'xcode' not in mcp:
+    mcp['xcode'] = {'type': 'local', 'command': ['xcrun', 'mcpbridge']}
+    cfg['mcp'] = mcp
+    changed = True
+  if changed:
     json.dump(cfg, open('${OPENCODE_JSON}', 'w'), indent=2, ensure_ascii=False)
     print('updated')
   else:
@@ -129,15 +137,24 @@ try:
 except Exception:
   print('error')
 " 2>/dev/null || echo "error")
-  if [ "${HAS_INSTRUCTIONS}" = "updated" ]; then
-    echo "  更新 opencode.json（已添加 PROFILE.md 到 instructions）"
-  elif [ "${HAS_INSTRUCTIONS}" = "error" ]; then
-    echo "  警告: opencode.json 解析失败，请手动添加 \"instructions\": [\"PROFILE.md\"]"
+  if [ "${UPDATED}" = "updated" ]; then
+    echo "  更新 opencode.json（已添加 PROFILE.md / xcode mcp）"
+  elif [ "${UPDATED}" = "error" ]; then
+    echo "  警告: opencode.json 解析失败，请手动配置"
   fi
 else
   cat > "${OPENCODE_JSON}" << 'OPENCODE_EOF'
 {
   "$schema": "https://opencode.ai/config.json",
+  "mcp": {
+    "xcode": {
+      "type": "local",
+      "command": [
+        "xcrun",
+        "mcpbridge"
+      ]
+    }
+  },
   "instructions": [
     "PROFILE.md"
   ]
