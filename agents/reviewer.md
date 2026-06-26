@@ -1,7 +1,6 @@
 ---
 description: "Plan 审核与 Review 收尾。对照 plan 逐项验收实施结果，创建 review 文档，记录偏差与遗留问题（P0/P1/P2 分级），双向同步 plan 跟踪表，判断签收条件。USE FOR: 审核 plan、review 收尾、验收检查、遗留问题管理、签收判定。DO NOT USE FOR: 代码实施、plan 编写、调研。"
 mode: subagent
-model: UCloudTencent_TokenHub/glm-5.1
 ---
 
 # Review Agent — 审核与 Review 收尾

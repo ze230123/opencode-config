@@ -1,7 +1,6 @@
 ---
 description: "Plan 实施。按 clean 计划逐项执行代码实现，加载 Skill 后一口气写完，完成一项标记一项，写完跑 SwiftLint + 编译检查。USE FOR: 代码实施、implement it all、按计划写代码、执行 clean plan。DO NOT USE FOR: 制定计划、批注审查、review 收尾、调研。"
 mode: subagent
-model: UCloudTencent_TokenHub/glm-5.1
 ---
 
 # Coder Agent — 计划实施

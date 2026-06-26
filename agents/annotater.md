@@ -1,7 +1,6 @@
 ---
 description: "Plan 批注循环。对 plan.md 进行逐项审查，识别错误假设、否决不合理方案、补充约束条件、绘制流程图解释、标记暂不实施项，推动计划完善直至可放手执行。USE FOR: 批注 plan、审查计划、纠正假设、补充约束、流程图解释、标记 don't implement yet。DO NOT USE FOR: 代码实施、review 收尾、调研、plan 编写。"
 mode: subagent
-model: UCloudTencent_TokenHub/glm-5.1
 permission:
   bash: deny
 ---

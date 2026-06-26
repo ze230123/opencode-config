@@ -8,10 +8,10 @@
 
 | Agent | 类型 | 模型 | 权限 | 核心职责 |
 |-------|------|------|------|---------|
-| **plan** | subagent | glm-5.1 | 读写+执行 | 调研代码库，输出开发计划 |
-| **annotate** | subagent | glm-5.1 | 编辑+禁止 bash | 批注审查计划，推动完善 |
+| **planner** | subagent | glm-5.1 | 读写+执行 | 调研代码库，输出开发计划 |
+| **annotater** | subagent | glm-5.1 | 编辑+禁止 bash | 批注审查计划，推动完善 |
 | **coder** | subagent | glm-5.1 | 读写+执行 | 按 plan 逐项实施代码 |
-| **review** | subagent | glm-5.1 | 读写+执行 | 逐项验收，创建 review 文档 |
+| **reviewer** | subagent | glm-5.1 | 读写+执行 | 逐项验收，创建 review 文档 |
 | **explore** | 内置 | — | 只读 | 快速搜索代码库 |
 | **general** | 内置 | — | 读写+执行 | 通用多步骤任务 |
 

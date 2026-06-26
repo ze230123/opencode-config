@@ -1,7 +1,6 @@
 ---
 description: "Plan 制定。调研代码库后输出 plan.md，含代码片段、文件路径、技术权衡、Skill 声明。USE FOR: 制定计划、规划功能、编写 plan、技术方案设计。DO NOT USE FOR: 代码实施、批注审查、review 收尾、调研。"
 mode: subagent
-model: UCloudTencent_TokenHub/glm-5.1
 ---
 
 # Plan Agent — 计划制定
