@@ -30,14 +30,13 @@ git pull
 | `plans/template/` | 计划模板（Swift Feature, Swift Refactor） |
 | `reviews/template/` | Review 模板（功能收尾, 代码审查） |
 | `agents-guide.md` | Agent 使用说明 |
-| `PROFILE.example.md` | 个人偏好模板 |
 
 ## 更新配置
 
 修改此仓库后，团队成员 pull 并重新运行 `init.sh` 即可同步。
 
-项目级自定义配置：直接修改项目内对应文件，init.sh 不会覆盖已存在的文件（PROFILE.md 除外）。
+项目级自定义配置：直接修改项目内对应文件，init.sh 不会覆盖已存在的文件。
 
 ## PROFILE.md
 
-`PROFILE.example.md` 是模板，初始化时自动复制为项目根目录的 `PROFILE.md`，每个人需要修改自己的个人信息。
+初始化时会交互式询问名字和称呼，自动生成项目根目录的 `PROFILE.md`。已有 PROFILE.md 则跳过，不会覆盖。
