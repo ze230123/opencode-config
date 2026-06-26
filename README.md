@@ -7,11 +7,11 @@
 ### 新项目
 
 ```bash
-# 方式一：本地脚本
-./init.sh /path/to/new-project
+# 方式一：在目标项目根目录下远程一行搞定
+curl -sL https://raw.githubusercontent.com/ze230123/opencode-config/main/init.sh | bash
 
-# 方式二：远程一行搞定
-curl -sL https://raw.githubusercontent.com/ze230123/opencode-config/main/init.sh | bash -s /path/to/project
+# 方式二：本地脚本（可指定路径，默认为当前目录）
+./init.sh /path/to/new-project
 ```
 
 ### 更新已有项目配置
