@@ -33,6 +33,9 @@ echo "==> 初始化 opencode 配置到 ${TARGET}"
 
 # .opencode/agents
 mkdir -p "${TARGET}/.opencode/agents"
+for old in "${TARGET}/.opencode/agents/"*.md; do
+  [ -f "$old" ] && [ ! -f "${SCRIPT_DIR}/agents/$(basename "$old")" ] && rm "$old" && echo "  删除 agents/$(basename "$old")（源中已不存在）"
+done
 for f in "${SCRIPT_DIR}/agents/"*.md; do
   [ -f "$f" ] && cp "$f" "${TARGET}/.opencode/agents/" && echo "  复制 agents/$(basename "$f")"
 done
@@ -42,18 +45,27 @@ done
 
 # .opencode/skills
 mkdir -p "${TARGET}/.opencode/skills"
+for old in "${TARGET}/.opencode/skills/"*/; do
+  [ -d "$old" ] && [ ! -d "${SCRIPT_DIR}/skills/$(basename "$old")" ] && rm -rf "$old" && echo "  删除 skills/$(basename "$old")（源中已不存在）"
+done
 for d in "${SCRIPT_DIR}/skills/"*/; do
   [ -d "$d" ] && name=$(basename "$d") && mkdir -p "${TARGET}/.opencode/skills/${name}" && cp "${d}SKILL.md" "${TARGET}/.opencode/skills/${name}/" && echo "  复制 skills/${name}/SKILL.md"
 done
 
 # plans/template
 mkdir -p "${TARGET}/plans/template"
+for old in "${TARGET}/plans/template/"*.md; do
+  [ -f "$old" ] && [ ! -f "${SCRIPT_DIR}/plans/template/$(basename "$old")" ] && rm "$old" && echo "  删除 plans/template/$(basename "$old")（源中已不存在）"
+done
 for f in "${SCRIPT_DIR}/plans/template/"*.md; do
   [ -f "$f" ] && cp "$f" "${TARGET}/plans/template/" && echo "  复制 plans/template/$(basename "$f")"
 done
 
 # reviews/template
 mkdir -p "${TARGET}/reviews/template"
+for old in "${TARGET}/reviews/template/"*.md; do
+  [ -f "$old" ] && [ ! -f "${SCRIPT_DIR}/reviews/template/$(basename "$old")" ] && rm "$old" && echo "  删除 reviews/template/$(basename "$old")（源中已不存在）"
+done
 for f in "${SCRIPT_DIR}/reviews/template/"*.md; do
   [ -f "$f" ] && cp "$f" "${TARGET}/reviews/template/" && echo "  复制 reviews/template/$(basename "$f")"
 done
