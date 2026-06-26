@@ -62,8 +62,8 @@ done
 if [ ! -f "${TARGET}/PROFILE.md" ]; then
   echo ""
   echo "==> 配置个人信息"
-  read -p "  你的名字（如：小明）: " PROFILE_NAME
-  read -p "  你的称呼（如：明哥）: " PROFILE_NICKNAME
+  read -p "  你的名字（如：小明）: " PROFILE_NAME </dev/tty
+  read -p "  你的称呼（如：明哥）: " PROFILE_NICKNAME </dev/tty
   [ -z "${PROFILE_NICKNAME}" ] && PROFILE_NICKNAME="${PROFILE_NAME}"
 
   cat > "${TARGET}/PROFILE.md" << PROFILEEOF
