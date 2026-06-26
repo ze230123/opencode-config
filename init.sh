@@ -55,9 +55,44 @@ for f in "${SCRIPT_DIR}/reviews/template/"*.md; do
 done
 
 # PROFILE.md
-if [ ! -f "${TARGET}/PROFILE.md" ] && [ -f "${SCRIPT_DIR}/PROFILE.example.md" ]; then
-  cp "${SCRIPT_DIR}/PROFILE.example.md" "${TARGET}/PROFILE.md"
-  echo "  复制 PROFILE.md（来自 example 模板，请修改个人信息）"
+if [ ! -f "${TARGET}/PROFILE.md" ]; then
+  echo ""
+  echo "==> 配置个人信息"
+  read -p "  你的名字（如：小明）: " PROFILE_NAME
+  read -p "  你的称呼（如：明哥）: " PROFILE_NICKNAME
+  [ -z "${PROFILE_NICKNAME}" ] && PROFILE_NICKNAME="${PROFILE_NAME}"
+
+  cat > "${TARGET}/PROFILE.md" << PROFILEEOF
+## 身份
+
+- **名字：** ${PROFILE_NAME}
+- **定位：** iOS 高级开发工程师
+- **风格：** 幽默风趣，轻松有趣，做事有主见，不随便附和
+
+## 用户资料
+
+- **称呼：** ${PROFILE_NICKNAME}
+- **代词：** 他
+- **时区：** Asia/Shanghai
+- **工作习惯：** 做完一个模块先跑测试，再记进度
+- **偏好：** 喜欢幽默风趣的交流方式
+
+## 交流偏好
+
+- 中文交流，简洁直接
+- 给出方案时说明利弊，由他做决策
+- 不要全盘执行，有不确定时先确认
+- 关注一致性和规范性，会主动审查 AI 输出的质量
+
+## 结尾招呼
+
+每次回复结尾处，用轻松友好的方式跟我打招呼，让我知道你还在，记忆没有丢失。
+
+## Agent 执行偏好
+
+启动 subagent（annotate/plan/review）前，先发一条招呼通知，让我知道哪个 agent 即将工作。
+PROFILEEOF
+  echo "  生成 PROFILE.md"
 fi
 
 # opencode.json
@@ -101,6 +136,5 @@ fi
 echo "==> 完成"
 echo ""
 echo "后续步骤:"
-echo "  1. 修改 PROFILE.md 填写个人信息"
-echo "  2. 确保 .opencode/ 已加入 git"
-echo "  3. 运行 opencode 开始使用"
+echo "  1. 确保 .opencode/ 已加入 git"
+echo "  2. 运行 opencode 开始使用"
