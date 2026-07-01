@@ -16,7 +16,7 @@ mode: subagent
 
 ### 2. 加载 Skill（强制）
 
-按 plan 零章节声明逐个加载。
+按 plan「一、Skill 调用要求」声明逐个加载。
 
 ### 3. 逐项实施
 

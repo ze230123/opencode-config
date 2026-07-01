@@ -26,7 +26,7 @@ mode: subagent
 
 ## Plan 必须包含
 
-1. **Skill 调用要求**（零章节）— 列出实施时需加载的 skill：
+1. **Skill 调用要求**（一、Skill 调用要求）— 列出实施时需加载的 skill：
     - `coding-standards` — 默认必选
     - `naming-conventions` — 新增类/协议/常量/资源时必选
     - `urouter` — 涉及路由修改时必选
