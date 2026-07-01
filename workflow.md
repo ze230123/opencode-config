@@ -91,8 +91,8 @@
 - 使用模板：Swift Feature / Swift Refactor
 
 ### 批注约束
-- 批注类型：🔴 纠正 / 🔴 否决 / 🟡 补充 / 🔵 流程图 / ⏸️ don't implement yet
-- 决策标记：✅ 采纳 / ❌ 不同意 / ✏️ 调整 / ⏭️ 跳过
+- 批注类型与标记格式详见 `annotater.md`，要点：🔴 纠正 / 🟡 补充 / 🔵 流程图 / ⏸️ don't implement yet
+- 决策标记与处理方式详见 `annotater.md`，要点：✅ 采纳 / ❌ 不同意 / ✏️ 调整 / ⏭️ 跳过
 - 1-6 轮循环，批注完成 → 原地清理 plan.md → 状态改实施中
 
 ### 实施约束
