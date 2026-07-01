@@ -4,6 +4,26 @@
 
 ---
 
+## 零、工作流约束 — `.opencode/workflow.md`
+
+`.opencode/workflow.md` 是工作流约束文件，通过 `opencode.json` 的 `instructions` 注入所有 Agent 系统上下文。它定义了：
+
+- 核心原则（单向推进、隔离开发、批注循环、Review 闭环）
+- Agent 协作流程图
+- Agent 职责边界
+- Plan 状态生命周期
+- 工作流触发规则
+- 关键约束（Plan / 批注 / 实施 / Review）
+
+**与 AGENTS.md 的区别：**
+- `.opencode/workflow.md` — 团队通用的工作流**约束**（由 `init.sh` 复制，Agent 必须遵守）
+- `AGENTS.md` — 项目特定的**上下文**（由 `opencode /init` 生成，描述项目架构、命令、约定）
+- 两者不冲突：workflow.md 在 `.opencode/` 目录内，AGENTS.md 在项目根目录，各自独立
+
+**初始化流程：** `init.sh` 复制 workflow.md 到 `.opencode/` 并将其加入 `instructions`；之后 `opencode /init` 生成的 AGENTS.md 只包含项目特定内容，不会覆盖或干扰工作流约束。
+
+---
+
 ## 一、Agent 总览
 
 | Agent | 类型 | 模型 | 权限 | 核心职责 |
@@ -146,7 +166,7 @@ Step 2 · 规划
    │  （内联决策 或 对话回复）
    │
    ▼
-处理决策 → 原地清理 plan.md
+处理决策 → 原地修正并清理 plan.md（由 annotater 子代理执行）
     │
     ├── 还有疑虑 → 继续批注（1-6 轮循环）
     │
@@ -235,6 +255,7 @@ Step 2 · 规划
 ### 关键约束（Annotate）
 
 - **只做批注，不做代码实施**
+- **批注修正也是 annotater 的职责**——主 agent 收到用户决策后，必须将决策传给 annotater 子代理执行修正，不得自行修改 plan
 - Plan 状态保持 `规划中`
 - 批注指向具体位置，不笼统评论
 - 使用 Xcode MCP 工具验证代码库现状

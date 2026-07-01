@@ -31,6 +31,18 @@ fi
 
 echo "==> 初始化 opencode 配置到 ${TARGET}"
 
+# .opencode/workflow.md（工作流约束）
+if [ -f "${SCRIPT_DIR}/workflow.md" ]; then
+  mkdir -p "${TARGET}/.opencode"
+  if [ -f "${TARGET}/.opencode/workflow.md" ]; then
+    cp "${SCRIPT_DIR}/workflow.md" "${TARGET}/.opencode/workflow.md"
+    echo "  更新 .opencode/workflow.md"
+  else
+    cp "${SCRIPT_DIR}/workflow.md" "${TARGET}/.opencode/workflow.md"
+    echo "  复制 .opencode/workflow.md（工作流约束）"
+  fi
+fi
+
 # .opencode/agents
 mkdir -p "${TARGET}/.opencode/agents"
 for old in "${TARGET}/.opencode/agents/"*.md; do
@@ -120,10 +132,11 @@ try:
   cfg = json.load(open('${OPENCODE_JSON}'))
   changed = False
   instr = cfg.get('instructions', [])
-  if 'PROFILE.md' not in instr:
-    instr.append('PROFILE.md')
-    cfg['instructions'] = instr
-    changed = True
+  for item in ['.opencode/workflow.md', 'PROFILE.md']:
+    if item not in instr:
+      instr.append(item)
+      changed = True
+  cfg['instructions'] = instr
   mcp = cfg.get('mcp', {})
   if 'xcode' not in mcp:
     mcp['xcode'] = {'type': 'local', 'command': ['xcrun', 'mcpbridge']}
@@ -138,7 +151,7 @@ except Exception:
   print('error')
 " 2>/dev/null || echo "error")
   if [ "${UPDATED}" = "updated" ]; then
-    echo "  更新 opencode.json（已添加 PROFILE.md / xcode mcp）"
+    echo "  更新 opencode.json（已添加 .opencode/workflow.md / PROFILE.md / xcode mcp）"
   elif [ "${UPDATED}" = "error" ]; then
     echo "  警告: opencode.json 解析失败，请手动配置"
   fi
@@ -156,6 +169,7 @@ else
     }
   },
   "instructions": [
+    ".opencode/workflow.md",
     "PROFILE.md"
   ]
 }

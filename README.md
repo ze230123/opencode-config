@@ -23,8 +23,9 @@ git pull
 
 ## 配置内容
 
-| 目录 | 说明 |
-|------|------|
+| 目录/文件 | 说明 |
+|----------|------|
+| `workflow.md` | 工作流约束（核心原则、协作流程、职责边界、上下文管理） |
 | `agents/` | 自定义 Agent（planner, annotater, coder, reviewer） |
 | `skills/` | Skill 定义（coding-standards, naming-conventions, urouter, swift-log） |
 | `plans/template/` | 计划模板（Swift Feature, Swift Refactor） |
@@ -35,9 +36,16 @@ git pull
 
 `init.sh` 会自动完成以下配置：
 
+- 复制 `workflow.md` 到项目 `.opencode/workflow.md`（工作流约束）
 - 复制 Agent、Skill、模板到项目 `.opencode/` 目录
-- 配置 `opencode.json`：添加 Xcode MCP（`xcrun mcpbridge`）和 `PROFILE.md` 指令
+- 配置 `opencode.json`：添加 `.opencode/workflow.md` 和 `PROFILE.md` 到 instructions，添加 Xcode MCP
 - 交互式生成 `PROFILE.md`
+
+`workflow.md` 与 `AGENTS.md` 各司其职：
+- **`.opencode/workflow.md`** — 团队通用的工作流约束（init.sh 复制，Agent 必须遵守）
+- **`AGENTS.md`** — 项目特定上下文（由 `opencode /init` 生成，描述项目架构和约定）
+
+两者互不干扰：先运行 `init.sh` 复制工作流约束，再运行 `opencode /init` 生成项目上下文。
 
 ## 更新配置
 
