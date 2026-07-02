@@ -94,7 +94,7 @@ Plan 必须包含的章节及约束详见 `planner.md`。
 
 | 场景 | 提示词 |
 |------|--------|
-| 重构规划 | `规划 swift-log 集成重构：替换所有 print/os_log 为 swift-log，保持现有日志点不遗漏，新增结构化日志` |
+| 重构规划 | `规划 os-logger 集成重构：替换所有 print/os_log 为 os.Logger，保持现有日志点不遗漏，新增隐私标注` |
 | 带版本号 | `给 v1.45.1 版本规划：志愿筛选增加按院校层次过滤，支持多选，结果实时刷新` |
 | 只调研 | `先调研项目中日志模块的现状，输出 research 文档` |
 | 指定模板 | `用 Swift Feature 模板规划这个功能` |
@@ -255,7 +255,7 @@ Plan 必须包含的章节及约束详见 `planner.md`。
 
 | 场景 | 提示词 |
 |------|--------|
-| 启动实施 | `执行 plans/plan-swift-log-integration-v1.md` |
+| 启动实施 | `执行 plans/plan-os-logger-integration-v1.md` |
 | 继续实施 | `implement it all, mark completed, don't stop` |
 | 从某步开始 | `从 Step 3 开始执行这个 plan` |
 | 修复打回 | `修复 plans/plan-xxx-v1.md 的 review 打回问题` |
@@ -369,7 +369,7 @@ Plan 必须包含的章节及约束详见 `planner.md`。
 | 场景 | 提示词 |
 |------|--------|
 | 并行调研 | `同时调研 News 模块和 Profile 模块的数据层实现` |
-| 复杂任务 | `把这三个模块的日志都迁移到 swift-log，输出对比报告` |
+| 复杂任务 | `把这三个模块的日志都迁移到 os.Logger，输出对比报告` |
 | 多步骤操作 | `清理 plans/ 下已完成的 plan，归档到 reviews/，输出摘要` |
 | 批量处理 | `给这三个文件都加上 MARK 分段注释` |
 

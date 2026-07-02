@@ -27,7 +27,7 @@ git pull
 |----------|------|
 | `workflow.md` | 工作流约束（核心原则、协作流程、职责边界、上下文管理） |
 | `agents/` | 自定义 Agent（planner, annotater, coder, reviewer） |
-| `skills/` | Skill 定义（coding-standards, naming-conventions, urouter, swift-log） |
+| `skills/` | Skill 定义（coding-standards, naming-conventions, urouter, os-logger） |
 | `plans/template/` | 计划模板（Swift Feature, Swift Refactor） |
 | `reviews/template/` | Review 模板（功能收尾, 代码审查） |
 | `agents-guide.md` | Agent 使用说明 |
